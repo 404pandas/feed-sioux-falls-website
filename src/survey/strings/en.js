@@ -7,6 +7,8 @@ const en = {
     quickExit: 'Quick Exit',
     quickExitHint: 'Leave this page fast. Your answers will be erased.',
     quickExitKeyHint: 'You can also press Esc.',
+    quickExitExplain: 'Need to leave fast? Tap Quick Exit at the top. It erases your answers and opens a weather page.',
+    backHome: 'Back to Feed Sioux Falls',
     safetyTip:
       'Safety tip: Quick Exit leaves this page right away. Your web browser may still remember that you were here. If that matters, clear your browser history after, or use a private window.',
 

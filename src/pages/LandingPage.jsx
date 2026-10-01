@@ -41,11 +41,25 @@ export default function LandingPage() {
         Bridging people who have a little extra with people who need a little extra.
       </p>
 
+      <Card style={{ marginBottom: 'var(--space-lg)' }}>
+        <p className="h2" style={{ marginBottom: 'var(--space-sm)' }}>
+          Welcome!
+        </p>
+        <p className="body-text" style={{ marginBottom: 'var(--space-sm)' }}>
+          <strong>Neighbors, volunteers, and admins with an account:</strong> pick your name below and enter your PIN.
+        </p>
+        <p className="body-text" style={{ marginBottom: 'var(--space-md)' }}>
+          <strong>Everyone else:</strong> no account needed - tap Continue as Guest to donate, get in touch, or see what's
+          available.
+        </p>
+        <Button title="Continue as Guest" variant="outline" onClick={() => navigate('/support')} block />
+      </Card>
+
       <SurveyInvite />
 
       <Card style={{ marginBottom: 'var(--space-lg)' }}>
         <p className="h2" style={{ marginBottom: 'var(--space-md)' }}>
-          Volunteer / Admin Login
+          Log In
         </p>
 
         <p className="body-muted" style={{ marginBottom: 'var(--space-sm)' }}>
@@ -103,8 +117,6 @@ export default function LandingPage() {
           </div>
         )}
       </Card>
-
-      <Button title="Continue as Guest" variant="outline" onClick={() => navigate('/support')} block />
     </div>
   );
 }

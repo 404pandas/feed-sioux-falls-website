@@ -180,7 +180,7 @@ export default function SurveyPage() {
     return (
       <SurveyShell language={language} onLanguageChange={setLanguage} escToExit={!isStaff}>
         <div className="stack gap-lg">
-          <ShareSurvey ui={ui} />
+          <p className="survey-exit-note">{ui.quickExitExplain}</p>
 
           <div className="stack gap-md">
             <div className="survey-question-head">
@@ -227,6 +227,8 @@ export default function SurveyPage() {
           ) : (
             <Button title={ui.start} variant="accent" onClick={() => setStep(1)} block />
           )}
+
+          <ShareSurvey ui={ui} />
 
           <p className="body-muted">{ui.savedNote}</p>
           <p className="body-muted">{ui.safetyTip}</p>
@@ -305,7 +307,14 @@ function SurveyShell({ language, onLanguageChange, escToExit, children }) {
   return (
     <div className="survey" lang={language.strings ? language.code : 'en'} dir={language.strings ? language.dir : 'ltr'}>
       <SurveyTopBar language={language} onLanguageChange={onLanguageChange} ui={ui} escToExit={escToExit} />
-      <main className="page survey-page">{children}</main>
+      <main className="page survey-page">
+        {/* The normal way out. Saved progress stays, so they can come back to it. */}
+        <Link to="/" className="survey-back-home no-print">
+          <span aria-hidden="true">{language.dir === 'rtl' ? '\u2192' : '\u2190'}</span>
+          {ui.backHome}
+        </Link>
+        {children}
+      </main>
     </div>
   );
 }
@@ -316,6 +325,7 @@ const PLACEHOLDER_UI = {
   quickExit: 'Quick Exit',
   quickExitHint: 'Leave this page fast.',
   quickExitKeyHint: 'You can also press Esc.',
+  backHome: 'Back to Feed Sioux Falls',
 };
 
 function WhoSees({ ui }) {
