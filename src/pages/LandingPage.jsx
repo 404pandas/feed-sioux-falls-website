@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Card from '../components/Card';
 import Button from '../components/Button';
+import SurveyInvite from '../components/SurveyInvite';
 import { api } from '../api/client';
 import { useAuth } from '../context/AuthContext';
 
@@ -39,6 +40,8 @@ export default function LandingPage() {
       <p className="body-muted" style={{ marginTop: 'var(--space-xs)', marginBottom: 'var(--space-lg)' }}>
         Bridging people who have a little extra with people who need a little extra.
       </p>
+
+      <SurveyInvite />
 
       <Card style={{ marginBottom: 'var(--space-lg)' }}>
         <p className="h2" style={{ marginBottom: 'var(--space-md)' }}>

@@ -86,4 +86,19 @@ export const api = {
   // Guest - contact
   submitContact: (payload) =>
     request('/api/contact', { method: 'POST', body: payload, requiresAuth: false }),
+
+  // Community survey. Submitting is public; the token is sent if there is
+  // one only so the backend can tell a volunteer is entering it.
+  submitSurvey: (payload) => request('/api/survey', { method: 'POST', body: payload }),
+  getSurveySummary: (params = {}) => {
+    const qs = new URLSearchParams(params).toString();
+    return request(`/api/survey/summary${qs ? `?${qs}` : ''}`);
+  },
+  getSurveyComments: (params = {}) => {
+    const qs = new URLSearchParams(params).toString();
+    return request(`/api/survey/comments${qs ? `?${qs}` : ''}`);
+  },
+  getSurveyContactRequests: () => request('/api/survey/contact-requests'),
+  resolveSurveyContactRequest: (id) =>
+    request(`/api/survey/contact-requests/${id}/resolve`, { method: 'PATCH' }),
 };

@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 
-import LandingPage from './pages/LandingPage';
-import GuestHomePage from './pages/GuestHomePage';
-import VolunteerHomePage from './pages/VolunteerHomePage';
-import QuickStockPage from './pages/QuickStockPage';
-import NeighborHomePage from './pages/NeighborHomePage';
-import InventoryPage from './pages/InventoryPage';
-import BudgetPage from './pages/BudgetPage';
-import ReportBuilderPage from './pages/ReportBuilderPage';
-import EventsListPage from './pages/EventsListPage';
-import EventDetailPage from './pages/EventDetailPage';
+const LandingPage = lazy(() => import('./pages/LandingPage'));
+const GuestHomePage = lazy(() => import('./pages/GuestHomePage'));
+const VolunteerHomePage = lazy(() => import('./pages/VolunteerHomePage'));
+const QuickStockPage = lazy(() => import('./pages/QuickStockPage'));
+const NeighborHomePage = lazy(() => import('./pages/NeighborHomePage'));
+const InventoryPage = lazy(() => import('./pages/InventoryPage'));
+const BudgetPage = lazy(() => import('./pages/BudgetPage'));
+const ReportBuilderPage = lazy(() => import('./pages/ReportBuilderPage'));
+const EventsListPage = lazy(() => import('./pages/EventsListPage'));
+const EventDetailPage = lazy(() => import('./pages/EventDetailPage'));
+const SurveyPage = lazy(() => import('./pages/SurveyPage'));
+const SurveyPrintPage = lazy(() => import('./pages/SurveyPrintPage'));
+const SurveyResultsPage = lazy(() => import('./pages/SurveyResultsPage'));
+
+// Pages are loaded on demand so the public pages - especially the survey,
+// which people open on weak signal and limited data - don't download the
+// charts library or Stripe (which SupportForms starts loading on import).
 
 // Shown before anyone logs in, and while donating/contacting as a guest.
 function GuestRoutes() {
@@ -19,6 +26,8 @@ function GuestRoutes() {
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/support" element={<GuestHomePage />} />
+      <Route path="/survey" element={<SurveyPage />} />
+      <Route path="/survey/print" element={<SurveyPrintPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
@@ -38,6 +47,10 @@ function StaffRoutes() {
       <Route path="/reports" element={<ReportBuilderPage />} />
       <Route path="/events" element={<EventsListPage />} />
       <Route path="/events/:eventId" element={<EventDetailPage />} />
+      {/* Volunteers fill the survey out with people and type in paper ones. */}
+      <Route path="/survey" element={<SurveyPage />} />
+      <Route path="/survey/print" element={<SurveyPrintPage />} />
+      <Route path="/survey/results" element={<SurveyResultsPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
@@ -51,6 +64,8 @@ function NeighborRoutes() {
   return (
     <Routes>
       <Route path="/" element={<NeighborHomePage />} />
+      <Route path="/survey" element={<SurveyPage />} />
+      <Route path="/survey/print" element={<SurveyPrintPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
@@ -59,17 +74,21 @@ function NeighborRoutes() {
 function RootRoutes() {
   const { user, loading } = useAuth();
 
-  if (loading) {
-    return (
-      <div style={{ display: 'flex', minHeight: '100vh', alignItems: 'center', justifyContent: 'center' }}>
-        <p className="body-muted">Loading…</p>
-      </div>
-    );
-  }
+  if (loading) return <FullPageLoading />;
 
-  if (!user) return <GuestRoutes />;
-  if (user.role === 'neighbor') return <NeighborRoutes />;
-  return <StaffRoutes />;
+  let routes = <StaffRoutes />;
+  if (!user) routes = <GuestRoutes />;
+  else if (user.role === 'neighbor') routes = <NeighborRoutes />;
+
+  return <Suspense fallback={<FullPageLoading />}>{routes}</Suspense>;
+}
+
+function FullPageLoading() {
+  return (
+    <div style={{ display: 'flex', minHeight: '100vh', alignItems: 'center', justifyContent: 'center' }}>
+      <p className="body-muted">Loading…</p>
+    </div>
+  );
 }
 
 export default function App() {

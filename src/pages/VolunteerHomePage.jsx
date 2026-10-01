@@ -23,6 +23,7 @@ function AdminMenu({ navigate, style }) {
       <Button title="Budget" variant="outline" onClick={() => navigate('/budget')} block />
       <Button title="Reports" variant="outline" onClick={() => navigate('/reports')} block />
       <Button title="Past Events" variant="outline" onClick={() => navigate('/events')} block />
+      <Button title="Survey Results" variant="outline" onClick={() => navigate('/survey/results')} block />
     </div>
   );
 }
@@ -142,6 +143,8 @@ export default function VolunteerHomePage() {
           <Button title="Start Distribution Event" onClick={startEvent} loading={starting} style={{ marginTop: 'var(--space-md)' }} block />
         </Card>
 
+        <Button title="Community Survey" variant="outline" onClick={() => navigate('/survey')} block />
+
         {user?.role === 'admin' && <AdminMenu navigate={navigate} style={{ marginTop: 'var(--space-xl)' }} />}
       </Layout>
     );
@@ -182,6 +185,7 @@ export default function VolunteerHomePage() {
             block
           />
           <Button title="Adjust Inventory" variant="outline" onClick={() => navigate('/quick-stock')} block />
+          <Button title="Community Survey" variant="outline" onClick={() => navigate('/survey')} block />
           {user?.role === 'admin' && (
             <Button
               title="End Event & Add Notes"

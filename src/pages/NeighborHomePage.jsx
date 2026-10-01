@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '../components/Layout';
 import Card from '../components/Card';
 import SupportForms from '../components/SupportForms';
+import SurveyInvite from '../components/SurveyInvite';
 import { useAuth } from '../context/AuthContext';
 
 export default function NeighborHomePage() {
@@ -34,6 +35,8 @@ export default function NeighborHomePage() {
         <p className="body-text">Saturdays, 10-11am CST</p>
         <p className="body-muted">Heritage Park, Weber Ave, Sioux Falls, SD</p>
       </Card>
+
+      <SurveyInvite />
 
       <SupportForms />
     </Layout>

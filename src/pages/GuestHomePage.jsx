@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import SupportForms from '../components/SupportForms';
+import SurveyInvite from '../components/SurveyInvite';
 
 export default function GuestHomePage() {
   const navigate = useNavigate();
@@ -12,6 +13,8 @@ export default function GuestHomePage() {
       <p className="body-muted" style={{ marginTop: 'var(--space-xs)', marginBottom: 'var(--space-lg)' }}>
         Every dollar goes toward hygiene and winter supplies for the pantry.
       </p>
+
+      <SurveyInvite />
 
       <SupportForms />
 
