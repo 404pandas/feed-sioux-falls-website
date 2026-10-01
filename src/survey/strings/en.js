@@ -20,7 +20,7 @@ const en = {
       'Every question is optional. You do not have to give your name. Answer only what you are comfortable with.',
     ],
     time: 'About 3 minutes',
-    start: 'Start',
+    start: 'Start survey',
     resumeTitle: 'Answers were saved on this phone',
     resumeBody: 'Someone started this survey earlier. Do you want to keep going, or start fresh?',
     resume: 'Keep going',
@@ -71,7 +71,7 @@ const en = {
     thanksContact: 'Someone from Feed Sioux Falls will reach out.',
     startAnother: 'Start a new survey',
 
-    shareTitle: 'Know someone who should fill this out?',
+    shareTitle: 'Send this survey to someone who should fill it out',
     shareButton: 'Share this survey',
     shareMessage: 'Feed Sioux Falls wants to hear from people in Sioux Falls who are unhoused or in need. It takes about 3 minutes and you can stay anonymous:',
     shareText: 'Text',

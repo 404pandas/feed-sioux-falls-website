@@ -20,7 +20,7 @@ const es = {
       'Todas las preguntas son opcionales. No tiene que dar su nombre. Conteste solo lo que le haga sentir cómodo.',
     ],
     time: 'Unos 3 minutos',
-    start: 'Empezar',
+    start: 'Empezar encuesta',
     resumeTitle: 'Hay respuestas guardadas en este teléfono',
     resumeBody: 'Alguien empezó esta encuesta antes. ¿Quiere continuar o empezar de nuevo?',
     resume: 'Continuar',
@@ -71,7 +71,7 @@ const es = {
     thanksContact: 'Alguien de Feed Sioux Falls se comunicará con usted.',
     startAnother: 'Empezar una encuesta nueva',
 
-    shareTitle: '¿Conoce a alguien que debería llenar esto?',
+    shareTitle: 'Envíe esta encuesta a alguien que debería llenarla',
     shareButton: 'Compartir esta encuesta',
     shareMessage: 'Feed Sioux Falls quiere escuchar a las personas de Sioux Falls que no tienen vivienda o que necesitan ayuda. Toma unos 3 minutos y puede ser anónima:',
     shareText: 'Mensaje de texto',
