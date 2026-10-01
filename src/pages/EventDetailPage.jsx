@@ -92,16 +92,18 @@ export default function EventDetailPage() {
     }
   }
 
+  const back = { to: '/events', label: 'Past Events' };
+
   if (loading || !event) {
     return (
-      <Layout>
+      <Layout back={back}>
         <p className="body-text">{error || 'Loading…'}</p>
       </Layout>
     );
   }
 
   return (
-    <Layout>
+    <Layout back={back}>
       <p className="h1">{formatDate(event.date)}</p>
 
       <Card style={{ marginTop: 'var(--space-lg)', marginBottom: 'var(--space-sm)', textAlign: 'center' }}>

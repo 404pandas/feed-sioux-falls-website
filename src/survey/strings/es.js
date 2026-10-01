@@ -9,6 +9,7 @@ const es = {
     quickExitKeyHint: 'También puede presionar Esc.',
     quickExitExplain: '¿Necesita salir rápido? Toque Salida rápida arriba. Borra sus respuestas y abre una página del clima.',
     backHome: 'Volver a Feed Sioux Falls',
+    backHomeGuest: 'Volver al inicio e iniciar sesión',
     safetyTip:
       'Consejo de seguridad: Salida rápida cierra esta página de inmediato. Su navegador todavía puede recordar que estuvo aquí. Si eso le preocupa, borre el historial del navegador después, o use una ventana privada.',
 

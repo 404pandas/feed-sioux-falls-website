@@ -221,6 +221,35 @@ p {
   color: var(--color-white);
 }
 
+/* Visible "← Home" / "← Back to..." link at the top of every inner page. */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: var(--space-xs) var(--space-md);
+  margin-bottom: var(--space-md);
+  border: 2px solid var(--color-primary);
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.header-action {
+  font-weight: 600;
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.header-user {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
 .header-title {
   font-weight: 600;
   font-size: 18px;
@@ -676,16 +705,6 @@ p {
   }
 }
 
-.survey-back-home {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 44px;
-  margin-bottom: var(--space-sm);
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--color-primary);
-}
 
 .survey-exit-note {
   font-size: 16px;

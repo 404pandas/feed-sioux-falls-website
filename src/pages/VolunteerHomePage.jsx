@@ -19,6 +19,7 @@ function todayBounds() {
 function AdminMenu({ navigate, style }) {
   return (
     <div className="stack gap-sm" style={style}>
+      <Button title="Messages" variant="outline" onClick={() => navigate('/messages')} block />
       <Button title="Inventory" variant="outline" onClick={() => navigate('/inventory')} block />
       <Button title="Budget" variant="outline" onClick={() => navigate('/budget')} block />
       <Button title="Reports" variant="outline" onClick={() => navigate('/reports')} block />
@@ -143,7 +144,10 @@ export default function VolunteerHomePage() {
           <Button title="Start Distribution Event" onClick={startEvent} loading={starting} style={{ marginTop: 'var(--space-md)' }} block />
         </Card>
 
-        <Button title="Community Survey" variant="outline" onClick={() => navigate('/survey')} block />
+        <div className="stack gap-sm">
+          <Button title="Adjust Inventory" variant="outline" onClick={() => navigate('/quick-stock')} block />
+          <Button title="Community Survey" variant="outline" onClick={() => navigate('/survey')} block />
+        </div>
 
         {user?.role === 'admin' && <AdminMenu navigate={navigate} style={{ marginTop: 'var(--space-xl)' }} />}
       </Layout>

@@ -32,6 +32,9 @@ export default function SurveyPrintPage() {
           <Link to="/survey" className="btn btn-outline btn-small">
             Back to survey
           </Link>
+          <Link to="/" className="btn btn-outline btn-small">
+            Home
+          </Link>
         </div>
 
         {type === 'flyer' ? <Flyer qr={qr} /> : <PaperSurvey strings={strings} qr={qr} />}

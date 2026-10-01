@@ -86,6 +86,8 @@ export const api = {
   // Guest - contact
   submitContact: (payload) =>
     request('/api/contact', { method: 'POST', body: payload, requiresAuth: false }),
+  getContactMessages: () => request('/api/contact'),
+  resolveContactMessage: (id) => request(`/api/contact/${id}/resolve`, { method: 'PATCH' }),
 
   // Community survey. Submitting is public; the token is sent if there is
   // one only so the backend can tell a volunteer is entering it.

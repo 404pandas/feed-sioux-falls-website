@@ -71,7 +71,7 @@ export default function SurveyPage() {
 
   if (!language.strings) {
     return (
-      <SurveyShell language={language} onLanguageChange={setLanguage} escToExit={!isStaff}>
+      <SurveyShell language={language} onLanguageChange={setLanguage} escToExit={!isStaff} loggedIn={!!user}>
         <TranslationPlaceholder language={language} onChooseLanguage={setLanguage} />
       </SurveyShell>
     );
@@ -160,7 +160,7 @@ export default function SurveyPage() {
 
   if (done) {
     return (
-      <SurveyShell language={language} onLanguageChange={setLanguage} escToExit={!isStaff}>
+      <SurveyShell language={language} onLanguageChange={setLanguage} escToExit={!isStaff} loggedIn={!!user}>
         <div className="stack gap-lg">
           <h1 className="h1" tabIndex={-1} ref={headingRef}>
             {ui.thanksTitle}
@@ -178,7 +178,7 @@ export default function SurveyPage() {
   if (step === 0) {
     const introText = [ui.title, ...ui.intro, ui.time].join('. ');
     return (
-      <SurveyShell language={language} onLanguageChange={setLanguage} escToExit={!isStaff}>
+      <SurveyShell language={language} onLanguageChange={setLanguage} escToExit={!isStaff} loggedIn={!!user}>
         <div className="stack gap-lg">
           <p className="survey-exit-note">{ui.quickExitExplain}</p>
 
@@ -242,7 +242,7 @@ export default function SurveyPage() {
   }
 
   return (
-    <SurveyShell language={language} onLanguageChange={setLanguage} escToExit={!isStaff}>
+    <SurveyShell language={language} onLanguageChange={setLanguage} escToExit={!isStaff} loggedIn={!!user}>
       <div className="stack gap-lg">
         <div className="stack gap-sm">
           <p className="body-muted" id="survey-progress-label">
@@ -302,16 +302,16 @@ export default function SurveyPage() {
   );
 }
 
-function SurveyShell({ language, onLanguageChange, escToExit, children }) {
+function SurveyShell({ language, onLanguageChange, escToExit, loggedIn, children }) {
   const ui = (language.strings || {}).ui || PLACEHOLDER_UI;
   return (
     <div className="survey" lang={language.strings ? language.code : 'en'} dir={language.strings ? language.dir : 'ltr'}>
       <SurveyTopBar language={language} onLanguageChange={onLanguageChange} ui={ui} escToExit={escToExit} />
       <main className="page survey-page">
         {/* The normal way out. Saved progress stays, so they can come back to it. */}
-        <Link to="/" className="survey-back-home no-print">
+        <Link to="/" className="back-link no-print">
           <span aria-hidden="true">{language.dir === 'rtl' ? '\u2192' : '\u2190'}</span>
-          {ui.backHome}
+          {loggedIn ? ui.backHome : ui.backHomeGuest}
         </Link>
         {children}
       </main>
@@ -326,6 +326,7 @@ const PLACEHOLDER_UI = {
   quickExitHint: 'Leave this page fast.',
   quickExitKeyHint: 'You can also press Esc.',
   backHome: 'Back to Feed Sioux Falls',
+  backHomeGuest: 'Back to home & log in',
 };
 
 function WhoSees({ ui }) {

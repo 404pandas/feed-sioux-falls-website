@@ -15,6 +15,7 @@ const EventDetailPage = lazy(() => import('./pages/EventDetailPage'));
 const SurveyPage = lazy(() => import('./pages/SurveyPage'));
 const SurveyPrintPage = lazy(() => import('./pages/SurveyPrintPage'));
 const SurveyResultsPage = lazy(() => import('./pages/SurveyResultsPage'));
+const MessagesPage = lazy(() => import('./pages/MessagesPage'));
 
 // Pages are loaded on demand so the public pages - especially the survey,
 // which people open on weak signal and limited data - don't download the
@@ -51,6 +52,7 @@ function StaffRoutes() {
       <Route path="/survey" element={<SurveyPage />} />
       <Route path="/survey/print" element={<SurveyPrintPage />} />
       <Route path="/survey/results" element={<SurveyResultsPage />} />
+      <Route path="/messages" element={<MessagesPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

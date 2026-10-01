@@ -7,7 +7,7 @@ import { api } from '../api/client';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
-const CATEGORIES = [
+export const CATEGORIES = [
   { value: 'contact', label: 'General' },
   { value: 'assistance', label: 'I need help' },
   { value: 'donate', label: 'Donation question' },
