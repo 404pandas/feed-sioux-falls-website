@@ -326,7 +326,7 @@ const PLACEHOLDER_UI = {
   quickExitHint: 'Leave this page fast.',
   quickExitKeyHint: 'You can also press Esc.',
   backHome: 'Back to Feed Sioux Falls',
-  backHomeGuest: 'Back to home & log in',
+  backHomeGuest: 'Back to Feed Sioux Falls',
 };
 
 function WhoSees({ ui }) {

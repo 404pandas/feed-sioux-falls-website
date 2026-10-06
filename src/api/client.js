@@ -32,7 +32,9 @@ async function request(path, { method = 'GET', body, requiresAuth = true } = {})
   const data = await response.json().catch(() => ({}));
 
   if (!response.ok) {
-    throw new Error(data.error || 'Something went wrong. Please try again.');
+    const error = new Error(data.error || 'Something went wrong. Please try again.');
+    error.status = response.status;
+    throw error;
   }
 
   return data;
@@ -103,4 +105,21 @@ export const api = {
   getSurveyContactRequests: () => request('/api/survey/contact-requests'),
   resolveSurveyContactRequest: (id) =>
     request(`/api/survey/contact-requests/${id}/resolve`, { method: 'PATCH' }),
+
+  // Public home page numbers and the "what we need" list - no login.
+  getPublicSummary: () => request('/api/public/summary', { requiresAuth: false }),
+
+  // Admin Data screens - every collection, admins only (backend routes/admin.js).
+  admin: {
+    collections: () => request('/api/admin/collections'),
+    list: (key, params = {}) => {
+      const clean = Object.fromEntries(Object.entries(params).filter(([, v]) => v !== undefined && v !== null && v !== ''));
+      const qs = new URLSearchParams(clean).toString();
+      return request(`/api/admin/${key}${qs ? `?${qs}` : ''}`);
+    },
+    get: (key, id) => request(`/api/admin/${key}/${id}`),
+    create: (key, body) => request(`/api/admin/${key}`, { method: 'POST', body }),
+    update: (key, id, body) => request(`/api/admin/${key}/${id}`, { method: 'PATCH', body }),
+    remove: (key, id) => request(`/api/admin/${key}/${id}`, { method: 'DELETE' }),
+  },
 };

@@ -22,7 +22,7 @@ export default function BudgetPage() {
 
   if (!data) {
     return (
-      <Layout>
+      <Layout title="Budget" narrow>
         <p className="body-text">{error || 'Loading budget…'}</p>
       </Layout>
     );
@@ -32,7 +32,7 @@ export default function BudgetPage() {
   const isOverBudget = data.remaining < 0;
 
   return (
-    <Layout>
+    <Layout title="Budget" narrow>
       <p className="h1">{data.budget.month} Budget</p>
 
       <Card style={{ marginTop: 'var(--space-lg)' }}>

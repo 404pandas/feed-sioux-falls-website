@@ -42,7 +42,7 @@ export default function SupportForms() {
   );
 }
 
-function DonateCard() {
+export function DonateCard() {
   const [amount, setAmount] = useState('');
   const [donorName, setDonorName] = useState('');
   const [donorEmail, setDonorEmail] = useState('');
@@ -109,7 +109,7 @@ function DonateCard() {
   return (
     <Card style={{ marginBottom: 'var(--space-lg)' }}>
       <p className="h2" style={{ marginBottom: 'var(--space-md)' }}>
-        Make a Donation
+        Give by card here
       </p>
 
       <label className="field-label">Amount (USD)</label>
@@ -209,12 +209,12 @@ function DonatePaymentForm({ onSuccess, onCancel }) {
   );
 }
 
-function ContactCard() {
+export function ContactCard({ defaultCategory = 'contact', title }) {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [category, setCategory] = useState('contact');
+  const [category, setCategory] = useState(defaultCategory);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
   const [sent, setSent] = useState(false);
@@ -239,7 +239,7 @@ function ContactCard() {
       setPhone('');
       setEmail('');
       setMessage('');
-      setCategory('contact');
+      setCategory(defaultCategory);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -250,7 +250,7 @@ function ContactCard() {
   return (
     <Card>
       <p className="h2" style={{ marginBottom: 'var(--space-md)' }}>
-        Contact Us
+        {title || 'Contact Us'}
       </p>
 
       {sent && (

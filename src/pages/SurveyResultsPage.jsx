@@ -160,6 +160,7 @@ export default function SurveyResultsPage() {
           </label>
           <div className="row-wrap gap-sm" style={{ marginTop: 'var(--space-md)' }}>
             <Button title="Print for City Council" small onClick={() => window.print()} />
+            <Button title="Read responses one by one" variant="primary" small onClick={() => navigate('/survey/responses')} />
             <Button title="Open the survey" variant="outline" small onClick={() => navigate('/survey')} />
             <Button title="Paper survey & flyer" variant="outline" small onClick={() => navigate('/survey/print')} />
           </div>

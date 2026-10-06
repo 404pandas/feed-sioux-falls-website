@@ -162,7 +162,7 @@ export default function ReportBuilderPage() {
 
   if (mode === 'preview' && report) {
     return (
-      <Layout>
+      <Layout title="Reports">
         <div className="row no-print" style={{ justifyContent: 'space-between', marginBottom: 'var(--space-md)' }}>
           <p className="h1">Report Preview</p>
           <Button title="Edit" variant="outline" small onClick={() => setMode('builder')} />
@@ -305,7 +305,7 @@ export default function ReportBuilderPage() {
   }
 
   return (
-    <Layout>
+    <Layout title="Reports">
       <p className="h1" style={{ marginBottom: 'var(--space-md)' }}>
         Build a Report
       </p>
