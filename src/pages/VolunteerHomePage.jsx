@@ -16,19 +16,6 @@ function todayBounds() {
   return { start, end };
 }
 
-function AdminMenu({ navigate, style }) {
-  return (
-    <div className="stack gap-sm" style={style}>
-      <Button title="Messages" variant="outline" onClick={() => navigate('/messages')} block />
-      <Button title="Inventory" variant="outline" onClick={() => navigate('/inventory')} block />
-      <Button title="Budget" variant="outline" onClick={() => navigate('/budget')} block />
-      <Button title="Reports" variant="outline" onClick={() => navigate('/reports')} block />
-      <Button title="Past Events" variant="outline" onClick={() => navigate('/events')} block />
-      <Button title="Survey Results" variant="outline" onClick={() => navigate('/survey/results')} block />
-    </div>
-  );
-}
-
 export default function VolunteerHomePage() {
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -99,7 +86,7 @@ export default function VolunteerHomePage() {
 
   if (checkingToday) {
     return (
-      <Layout>
+      <Layout title="Count people" narrow>
         <p className="body-text">Checking today's schedule…</p>
       </Layout>
     );
@@ -107,7 +94,7 @@ export default function VolunteerHomePage() {
 
   if (!activeEvent && checkError) {
     return (
-      <Layout>
+      <Layout title="Count people" narrow>
         <p className="h1">Couldn't check today's schedule</p>
         <p className="body-muted" style={{ marginTop: 'var(--space-xs)', marginBottom: 'var(--space-lg)' }}>
           Check your connection and try again before starting a new event - there may already be
@@ -120,7 +107,7 @@ export default function VolunteerHomePage() {
 
   if (!activeEvent) {
     return (
-      <Layout>
+      <Layout title="Count people" narrow>
         <p className="h1">Hi, {user?.name?.split(' ')[0]}</p>
         <p className="body-muted" style={{ marginTop: 'var(--space-xs)', marginBottom: 'var(--space-lg)' }}>
           Nothing's scheduled for today - fill in where this one's happening to begin counting.
@@ -145,17 +132,16 @@ export default function VolunteerHomePage() {
         </Card>
 
         <div className="stack gap-sm">
-          <Button title="Adjust Inventory" variant="outline" onClick={() => navigate('/quick-stock')} block />
+          <Button title="Inventory" variant="outline" onClick={() => navigate('/inventory')} block />
           <Button title="Community Survey" variant="outline" onClick={() => navigate('/survey')} block />
         </div>
 
-        {user?.role === 'admin' && <AdminMenu navigate={navigate} style={{ marginTop: 'var(--space-xl)' }} />}
       </Layout>
     );
   }
 
   return (
-    <Layout>
+    <Layout title="Count people" narrow>
       <div className="stack" style={{ gap: 'var(--space-xl)' }}>
         <div>
           <p className="h2">Today's Distribution</p>
@@ -188,7 +174,7 @@ export default function VolunteerHomePage() {
             onClick={() => tap(-1)}
             block
           />
-          <Button title="Adjust Inventory" variant="outline" onClick={() => navigate('/quick-stock')} block />
+          <Button title="Inventory" variant="outline" onClick={() => navigate('/inventory')} block />
           <Button title="Community Survey" variant="outline" onClick={() => navigate('/survey')} block />
           {user?.role === 'admin' && (
             <Button
@@ -200,7 +186,6 @@ export default function VolunteerHomePage() {
           )}
         </div>
 
-        {user?.role === 'admin' && <AdminMenu navigate={navigate} />}
       </div>
     </Layout>
   );

@@ -45,7 +45,7 @@ export default function EventsListPage() {
   }, [load]);
 
   return (
-    <Layout>
+    <Layout title="Past events">
       <p className="h1" style={{ marginBottom: 'var(--space-xs)' }}>
         {filterDate ? `Events on ${formatDate(filterDate)}` : 'Past Events'}
       </p>
