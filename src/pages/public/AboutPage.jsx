@@ -4,7 +4,7 @@ import Button from '../../components/Button';
 import Icon from '../../components/Icon';
 import { ContactCard } from '../../components/SupportForms';
 import { ORG } from '../../config/org';
-import { formatNumber, usePublicSummary } from '../../components/PublicData';
+import { formatNumber, servedParts, usePublicSummary } from '../../components/PublicData';
 import { PageTitle } from './GetHelpPage';
 
 export default function AboutPage() {
@@ -28,10 +28,13 @@ export default function AboutPage() {
               Every Saturday our {ORG.outreach.name} heads to {ORG.outreach.where} with food, hygiene kits, clothing, and
               winter gear for neighbors living outside.
             </p>
-            {summary && summary.peopleServed.allTime > 0 && (
+            {summary && servedParts(summary).counted > 0 && (
               <p className="body-text">
-                Our volunteers count every person they serve. So far that's{' '}
-                <span className="mark">{formatNumber(summary.peopleServed.allTime)} people</span>.
+                Volunteers count every person they serve, one at a time.{' '}
+                {servedParts(summary).since ? `Since ${servedParts(summary).since}, that's` : "So far that's"}{' '}
+                <span className="mark">{formatNumber(servedParts(summary).counted)} people</span>.
+                {servedParts(summary).estimated > 0 &&
+                  ` Before counting began, Feed Sioux Falls estimates about ${formatNumber(servedParts(summary).estimated)} more were served (an estimate, not a count).`}
               </p>
             )}
           </div>

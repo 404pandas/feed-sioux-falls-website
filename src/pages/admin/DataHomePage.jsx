@@ -17,7 +17,7 @@ export async function loadCollections(force = false) {
 const GROUPS = [
   { title: 'People', keys: ['users'] },
   { title: 'Pantry', keys: ['items', 'inventoryTransactions', 'purchases', 'budgets'] },
-  { title: 'Outreach', keys: ['events', 'tallies'] },
+  { title: 'Outreach', keys: ['events', 'tallies', 'estimates'] },
   { title: 'From the public', keys: ['contactMessages', 'surveyResponses', 'surveyContactRequests', 'donations'] },
   { title: 'Records', keys: ['auditLog'] },
 ];

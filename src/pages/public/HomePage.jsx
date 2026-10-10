@@ -4,7 +4,7 @@ import PublicLayout from '../../components/PublicLayout';
 import Button from '../../components/Button';
 import Icon from '../../components/Icon';
 import { ORG } from '../../config/org';
-import { NeedsList, formatNumber, formatOutreachDate, usePublicSummary } from '../../components/PublicData';
+import { NeedsList, formatNumber, formatOutreachDate, servedParts, usePublicSummary } from '../../components/PublicData';
 
 export default function HomePage() {
   const { summary, loading } = usePublicSummary();
@@ -41,18 +41,17 @@ export default function HomePage() {
 
       <section className="band band-white" aria-label="Our impact">
         <div className="container">
-          {summary ? (
+          {summary && servedParts(summary).counted > 0 ? (
             <>
               <p className="impact">
-                So far, neighbors helping neighbors have served <span className="mark">{formatNumber(summary.peopleServed.allTime)} people</span>{' '}
-                and handed out <span className="mark">{formatNumber(summary.itemsGiven.allTime)} items</span> across{' '}
-                <span className="mark">{formatNumber(summary.outreachEvents)} outreach days</span>.
+                {servedParts(summary).since ? `Since ${servedParts(summary).since}, volunteers` : 'Volunteers'} have hand-counted{' '}
+                <span className="mark">{formatNumber(servedParts(summary).counted)} people</span> across{' '}
+                <span className="mark">{formatNumber(summary.outreachEvents)} outreach days</span>, one person at a time.
               </p>
               <p className="impact-note">
-                Counted live by our volunteers, one person at a time.
-                {summary.peopleServed.thisYear > 0 && ` ${formatNumber(summary.peopleServed.thisYear)} this year`}
-                {summary.peopleServed.thisMonth > 0 && `, ${formatNumber(summary.peopleServed.thisMonth)} this month`}
-                {summary.peopleServed.thisYear > 0 && '.'}
+                {servedParts(summary).estimated > 0 &&
+                  `Before counting began, Feed Sioux Falls estimates about ${formatNumber(servedParts(summary).estimated)} more people were served. That number is an estimate, not a count. `}
+                {summary.peopleServed.thisMonth > 0 && `${formatNumber(summary.peopleServed.thisMonth)} people counted so far this month.`}
               </p>
             </>
           ) : (
