@@ -31,6 +31,22 @@ export function formatOutreachDate(iso) {
   return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
 }
 
+// People served comes in two parts that are never blended into one number:
+// real hand counts (every person tapped in at an outreach, since counting
+// began) and Feed Sioux Falls' estimate for the time before that. Works with
+// an older backend too (then everything is treated as counted).
+export function servedParts(summary) {
+  const p = summary?.peopleServed || {};
+  const counted = p.counted ?? p.allTime ?? 0;
+  const since = p.countedSince
+    ? new Date(p.countedSince).toLocaleDateString('en-US', { timeZone: 'America/Chicago', month: 'long', day: 'numeric', year: 'numeric' })
+    : null;
+  const through = p.estimatedThrough
+    ? new Date(p.estimatedThrough).toLocaleDateString('en-US', { timeZone: 'UTC', month: 'long', day: 'numeric', year: 'numeric' })
+    : null;
+  return { counted, since, estimated: p.estimated || 0, through };
+}
+
 export function StatusPill({ status }) {
   if (status === 'out') return <span className="pill pill-out">Out right now</span>;
   if (status === 'low') return <span className="pill pill-low">Running low</span>;

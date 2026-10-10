@@ -30,6 +30,8 @@ const ENUM_LABELS = {
   ar: 'Arabic',
   dak: 'Dakota',
   lkt: 'Lakota',
+  tap: 'Counter in the app',
+  import: 'Copied from count sheet',
   create: 'Added',
   update: 'Edited',
   delete: 'Deleted',
