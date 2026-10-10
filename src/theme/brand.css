@@ -1418,3 +1418,15 @@ button.stat {
     box-shadow: none !important;
   }
 }
+
+/* Warning at the top of the card donation form while Stripe is in test mode. */
+.test-mode-notice {
+  margin-bottom: var(--space-md);
+  padding: 12px var(--space-md);
+  border: var(--outline);
+  border-left-width: 6px;
+  border-left-color: var(--color-danger);
+  border-radius: var(--radius-md);
+  background: var(--coin-soft);
+  font-size: 17px;
+}
