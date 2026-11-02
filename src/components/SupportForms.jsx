@@ -143,7 +143,7 @@ export function DonateCard() {
           {PRESET_AMOUNTS[PRESET_AMOUNTS.length - 1].description}
         </p>
       )}
-      <input
+      <input aria-label="Donation amount in dollars"
         className="field-input"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
@@ -152,10 +152,10 @@ export function DonateCard() {
       />
 
       <label className="field-label">Your name (optional)</label>
-      <input className="field-input" value={donorName} onChange={(e) => setDonorName(e.target.value)} placeholder="Jane Doe" />
+      <input aria-label="Your name (optional)" className="field-input" value={donorName} onChange={(e) => setDonorName(e.target.value)} placeholder="Jane Doe" />
 
       <label className="field-label">Email (optional)</label>
-      <input
+      <input aria-label="Email (optional)"
         className="field-input"
         value={donorEmail}
         onChange={(e) => setDonorEmail(e.target.value)}
@@ -287,16 +287,16 @@ export function ContactCard({ defaultCategory = 'contact', title }) {
       </div>
 
       <label className="field-label">Name (optional)</label>
-      <input className="field-input" value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name" />
+      <input aria-label="Name (optional)" className="field-input" value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name" />
 
       <label className="field-label">Phone (optional)</label>
-      <input className="field-input" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="(605) 555-0100" type="tel" />
+      <input aria-label="Phone (optional)" className="field-input" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="(605) 555-0100" type="tel" />
 
       <label className="field-label">Email (optional)</label>
-      <input className="field-input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" type="email" />
+      <input aria-label="Email (optional)" className="field-input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" type="email" />
 
       <label className="field-label">Message</label>
-      <textarea
+      <textarea aria-label="Message"
         className="field-textarea"
         value={message}
         onChange={(e) => setMessage(e.target.value)}

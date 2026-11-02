@@ -51,7 +51,7 @@ export default function EventsListPage() {
       </p>
 
       <div className="row gap-sm" style={{ marginBottom: 'var(--space-md)' }}>
-        <input
+        <input aria-label="Show events on this date"
           className="field-input"
           type="date"
           value={filterDate}

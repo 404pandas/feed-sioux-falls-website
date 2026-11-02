@@ -321,14 +321,14 @@ export default function ReportBuilderPage() {
 
       {preset === 'custom' && (
         <div className="row gap-sm" style={{ marginBottom: 'var(--space-md)' }}>
-          <input
+          <input aria-label="From date"
             className="field-input"
             type="date"
             value={toInputDate(start)}
             onChange={(e) => setStart(new Date(e.target.value))}
             style={{ flex: 1 }}
           />
-          <input
+          <input aria-label="To date"
             className="field-input"
             type="date"
             value={toInputDate(end)}
@@ -365,7 +365,7 @@ export default function ReportBuilderPage() {
       </Card>
 
       <label className="field-label">Notes for this report (optional)</label>
-      <textarea
+      <textarea aria-label="Notes for this report (optional)"
         className="field-textarea"
         value={narrative}
         onChange={(e) => setNarrative(e.target.value)}
