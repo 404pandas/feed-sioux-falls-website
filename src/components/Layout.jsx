@@ -22,7 +22,7 @@ const ADMIN_RUN = [
   { to: '/messages', label: 'Messages', icon: 'mail', badge: 'messages' },
   { to: '/survey/results', label: 'Survey results', icon: 'chart', badge: 'contactRequests' },
   { to: '/survey/responses', label: 'Survey responses', icon: 'list' },
-  { to: '/budget', label: 'Budget', icon: 'wallet' },
+  { to: '/budget', label: 'Receipts & budget', icon: 'wallet' },
   { to: '/reports', label: 'Reports', icon: 'chart' },
   { to: '/events', label: 'Past events', icon: 'calendar' },
 ];
@@ -89,6 +89,12 @@ function NavGroups({ isAdmin, badges }) {
           {ADMIN_DATA.map((item) => (
             <NavItem key={item.to} item={item} badges={badges} />
           ))}
+        </>
+      )}
+      {!isAdmin && (
+        <>
+          <p className="sidebar-group">Shopping</p>
+          <NavItem item={{ to: '/budget', label: 'Add a receipt', icon: 'wallet' }} badges={badges} />
         </>
       )}
       <p className="sidebar-group">Public</p>
