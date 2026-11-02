@@ -71,7 +71,8 @@ function StaffRoutes({ isAdmin }) {
       <Route path="/give" element={<GivePage />} />
       <Route path="/about" element={<AboutPage />} />
 
-      <Route path="/budget" element={admin(<BudgetPage />)} />
+      {/* Every volunteer can add a receipt; the page hides admin controls. */}
+      <Route path="/budget" element={<BudgetPage />} />
       <Route path="/reports" element={admin(<ReportBuilderPage />)} />
       <Route path="/events" element={admin(<EventsListPage />)} />
       <Route path="/events/:eventId" element={admin(<EventDetailPage />)} />

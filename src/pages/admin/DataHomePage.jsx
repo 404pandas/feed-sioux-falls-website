@@ -19,6 +19,7 @@ const GROUPS = [
   { title: 'Pantry', keys: ['items', 'inventoryTransactions', 'purchases', 'budgets'] },
   { title: 'Outreach', keys: ['events', 'tallies', 'estimates'] },
   { title: 'From the public', keys: ['contactMessages', 'surveyResponses', 'surveyContactRequests', 'donations'] },
+  { title: 'Team', keys: ['staffMessages', 'sentNotifications'] },
   { title: 'Records', keys: ['auditLog'] },
 ];
 

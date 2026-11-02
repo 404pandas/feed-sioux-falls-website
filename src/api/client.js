@@ -40,6 +40,30 @@ async function request(path, { method = 'GET', body, requiresAuth = true } = {})
   return data;
 }
 
+// Receipt photos and the CSV export need the login too, so they're fetched
+// here and handed back as a Blob (shown with URL.createObjectURL, or saved).
+export async function fetchFile(path) {
+  const token = getToken();
+  const response = await fetch(`${API_URL}${path}`, { headers: token ? { Authorization: `Bearer ${token}` } : {} });
+  if (!response.ok) {
+    const data = await response.json().catch(() => ({}));
+    throw new Error(data.error || 'Could not download that. Please try again.');
+  }
+  return response.blob();
+}
+
+// Saves a Blob as a file with the given name.
+export function saveFile(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
 export const api = {
   // Auth
   getNames: () => request('/api/auth/names', { requiresAuth: false }),
@@ -68,6 +92,16 @@ export const api = {
   getCurrentBudget: () => request('/api/budget/current'),
   updateBudget: (totalBudget) => request('/api/budget/current', { method: 'PATCH', body: { totalBudget } }),
   logPurchase: (payload) => request('/api/budget/purchases', { method: 'POST', body: payload }),
+  getBudgetMonth: (month) => request(`/api/budget/month/${month}`),
+  setBudgetMonth: (month, totalBudget) => request(`/api/budget/month/${month}`, { method: 'PATCH', body: { totalBudget } }),
+
+  // Receipts - photo: { base64, contentType }; lines: [{ itemId, quantity }]
+  createReceipt: (payload) => request('/api/receipts', { method: 'POST', body: payload }),
+  updateReceipt: (id, payload) => request(`/api/receipts/${id}`, { method: 'PATCH', body: payload }),
+  deleteReceipt: (id) => request(`/api/receipts/${id}`, { method: 'DELETE' }),
+  getReceiptStorage: () => request('/api/receipts/storage'),
+  getReceiptPhoto: (id) => fetchFile(`/api/receipts/${id}/photo`),
+  getReceiptsCsv: (month) => fetchFile(`/api/receipts/export.csv?month=${month}`),
 
   // Reports
   getWeeklyReport: (date) => request(`/api/reports/weekly${date ? `?date=${date}` : ''}`),
