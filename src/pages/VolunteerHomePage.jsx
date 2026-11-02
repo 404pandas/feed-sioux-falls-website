@@ -117,10 +117,10 @@ export default function VolunteerHomePage() {
           <label className="field-label" style={{ marginTop: 0 }}>
             Location
           </label>
-          <input className="field-input" value={startLocation} onChange={(e) => setStartLocation(e.target.value)} placeholder="Where is this happening?" />
+          <input aria-label="Location" className="field-input" value={startLocation} onChange={(e) => setStartLocation(e.target.value)} placeholder="Where is this happening?" />
 
           <label className="field-label">Notes (optional)</label>
-          <textarea
+          <textarea aria-label="Notes (optional)"
             className="field-textarea"
             value={startDetails}
             onChange={(e) => setStartDetails(e.target.value)}

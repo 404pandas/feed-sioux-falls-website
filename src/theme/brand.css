@@ -971,6 +971,9 @@ button.stat {
   font-weight: 700;
   font-size: 18px;
   line-height: 1.3;
+  /* Names like "shampoo/conditioner/body wash" have no spaces to break at
+     and ran into the -/+ counter on phones. */
+  overflow-wrap: anywhere;
 }
 .inv-meta {
   display: flex;
@@ -1091,6 +1094,9 @@ button.stat {
   position: fixed;
   z-index: 51;
   inset: 0;
+  /* The visible screen height: on iPhones a plain "inset: 0" panel runs
+     behind Safari's bottom toolbar, hiding the Save button underneath. */
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   background: var(--paper);
@@ -1114,7 +1120,12 @@ button.stat {
 }
 .drawer-body {
   flex: 1;
+  /* Lets the form shrink and scroll inside the panel on every browser
+     (older Safari otherwise grows it past the screen with no way to scroll). */
+  min-height: 0;
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   padding: 8px 20px 24px;
 }
 .drawer-foot {

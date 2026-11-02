@@ -114,7 +114,7 @@ export default function EventDetailPage() {
       {adjusting ? (
         <Card style={{ marginBottom: 'var(--space-lg)' }}>
           <p className="body-text">Do you want to adjust the count from {totalServed}?</p>
-          <input
+          <input aria-label="New total of people served"
             className="field-input"
             value={adjustedTotal}
             onChange={(e) => setAdjustedTotal(e.target.value)}
@@ -133,10 +133,10 @@ export default function EventDetailPage() {
       <label className="field-label" style={{ marginTop: 0 }}>
         Location
       </label>
-      <input className="field-input" value={location} onChange={(e) => setLocation(e.target.value)} />
+      <input aria-label="Location" className="field-input" value={location} onChange={(e) => setLocation(e.target.value)} />
 
       <label className="field-label">Notes</label>
-      <textarea
+      <textarea aria-label="Notes"
         className="field-textarea"
         value={details}
         onChange={(e) => setDetails(e.target.value)}

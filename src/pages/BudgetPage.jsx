@@ -285,7 +285,7 @@ function ReceiptDrawer({ receipt, isAdmin, onClose, onSaved }) {
                   </Button>
                 </div>
               ))}
-              <input className="field-input" style={{ marginTop: 8 }} placeholder="Search items to add…" value={search} onChange={(e) => setSearch(e.target.value)} />
+              <input className="field-input" style={{ marginTop: 8 }} aria-label="Search items to add" placeholder="Search items to add…" value={search} onChange={(e) => setSearch(e.target.value)} />
               {results.map((i) => (
                 <button
                   key={i._id}
