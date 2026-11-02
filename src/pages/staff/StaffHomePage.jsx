@@ -84,7 +84,7 @@ export default function StaffHomePage() {
           <Link to="/messages" className="action-tile tile-heart">
             <Icon name="mail" />
             <span>
-              <span className="tile-title">Messages</span>
+              <span className="tile-title">Help requests</span>
               <br />
               <span className="tile-sub">
                 {inbox ? `${inbox.messages} new · ${inbox.contactRequests} asked to be contacted` : 'From the website'}

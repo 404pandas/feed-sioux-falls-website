@@ -19,7 +19,7 @@ const MAIN = [
 ];
 
 const ADMIN_RUN = [
-  { to: '/messages', label: 'Messages', icon: 'mail', badge: 'messages' },
+  { to: '/messages', label: 'Help requests', icon: 'mail', badge: 'messages' },
   { to: '/survey/results', label: 'Survey results', icon: 'chart', badge: 'contactRequests' },
   { to: '/survey/responses', label: 'Survey responses', icon: 'list' },
   { to: '/budget', label: 'Receipts & budget', icon: 'wallet' },

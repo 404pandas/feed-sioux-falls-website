@@ -46,8 +46,8 @@ export default function MessagesPage() {
   const openCount = messages.filter((m) => !m.resolved).length;
 
   return (
-    <Layout title="Messages">
-      <p className="h1">Messages</p>
+    <Layout title="Help requests">
+      <p className="h1">Help requests</p>
       <p className="body-muted" style={{ marginTop: 'var(--space-xs)', marginBottom: 'var(--space-md)' }}>
         From the contact form. {openCount} open.
       </p>
