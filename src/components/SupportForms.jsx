@@ -42,18 +42,6 @@ export default function SupportForms() {
   );
 }
 
-// Card donations go through Stripe's test environment for now, so no real
-// money moves. Remove this (and its two uses below) once Stripe is switched
-// to live keys.
-function TestModeNotice() {
-  return (
-    <p className="test-mode-notice" role="note">
-      <strong>This donation platform is currently in a test environment.</strong> To donate, please use one of the
-      methods above.
-    </p>
-  );
-}
-
 export function DonateCard() {
   const [amount, setAmount] = useState('');
   const [donorName, setDonorName] = useState('');
@@ -111,7 +99,6 @@ export function DonateCard() {
         <p className="h2" style={{ marginBottom: 'var(--space-md)' }}>
           Complete Your ${amount} Donation
         </p>
-        <TestModeNotice />
         <Elements stripe={stripePromise} options={{ clientSecret }}>
           <DonatePaymentForm onSuccess={handleSuccess} onCancel={() => setClientSecret(null)} />
         </Elements>
@@ -124,7 +111,6 @@ export function DonateCard() {
       <p className="h2" style={{ marginBottom: 'var(--space-md)' }}>
         Give by card here
       </p>
-      <TestModeNotice />
 
       <label className="field-label">Amount (USD)</label>
       <div className="row-wrap gap-xs" style={{ marginBottom: 'var(--space-sm)' }}>
