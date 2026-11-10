@@ -7,6 +7,7 @@ const HomePage = lazy(() => import('./pages/public/HomePage'));
 const GetHelpPage = lazy(() => import('./pages/public/GetHelpPage'));
 const GivePage = lazy(() => import('./pages/public/GivePage'));
 const AboutPage = lazy(() => import('./pages/public/AboutPage'));
+const PrivacyPage = lazy(() => import('./pages/public/PrivacyPage'));
 const LoginPage = lazy(() => import('./pages/public/LoginPage'));
 const SurveyPage = lazy(() => import('./pages/SurveyPage'));
 const SurveyPrintPage = lazy(() => import('./pages/SurveyPrintPage'));
@@ -39,6 +40,7 @@ function PublicRoutes({ isGuest }) {
       <Route path="/help" element={<GetHelpPage />} />
       <Route path="/give" element={<GivePage />} />
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/privacy" element={<PrivacyPage />} />
       <Route path="/survey" element={<SurveyPage />} />
       <Route path="/survey/print" element={<SurveyPrintPage />} />
       <Route path="/login" element={isGuest ? <LoginPage /> : <Navigate to="/" replace />} />
@@ -70,6 +72,7 @@ function StaffRoutes({ isAdmin }) {
       <Route path="/help" element={<GetHelpPage />} />
       <Route path="/give" element={<GivePage />} />
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/privacy" element={<PrivacyPage />} />
 
       {/* Every volunteer can add a receipt; the page hides admin controls. */}
       <Route path="/budget" element={<BudgetPage />} />

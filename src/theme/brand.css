@@ -1430,3 +1430,35 @@ button.stat {
   }
 }
 
+
+/* ---------- Privacy policy ---------- */
+
+.policy .policy-summary ul,
+.policy-section ul {
+  margin: 8px 0 0;
+  padding-left: 1.3em;
+  display: grid;
+  gap: 8px;
+  font-size: 18px;
+  line-height: 1.55;
+}
+.policy-summary {
+  background: var(--teal-soft);
+}
+.policy-section {
+  margin-top: var(--space-xl);
+}
+.policy-section .h2 {
+  margin-bottom: var(--space-sm);
+}
+.policy-section .h3 {
+  font-family: var(--font-display, inherit);
+  font-size: 20px;
+  margin: var(--space-md) 0 6px;
+}
+.policy-section .body-text + .body-text {
+  margin-top: 10px;
+}
+.policy a {
+  overflow-wrap: anywhere;
+}
