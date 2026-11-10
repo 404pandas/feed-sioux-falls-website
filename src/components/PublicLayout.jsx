@@ -193,6 +193,7 @@ function SiteFooter() {
 
         <div className="footer-bottom">
           <span>Food is a human right.</span>
+          <Link to="/privacy">Privacy policy</Link>
           <Link to="/login">Staff & volunteer log in</Link>
         </div>
       </div>

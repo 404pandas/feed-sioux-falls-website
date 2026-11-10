@@ -1430,14 +1430,35 @@ button.stat {
   }
 }
 
-/* Warning at the top of the card donation form while Stripe is in test mode. */
-.test-mode-notice {
-  margin-bottom: var(--space-md);
-  padding: 12px var(--space-md);
-  border: var(--outline);
-  border-left-width: 6px;
-  border-left-color: var(--color-danger);
-  border-radius: var(--radius-md);
-  background: var(--coin-soft);
-  font-size: 17px;
+
+/* ---------- Privacy policy ---------- */
+
+.policy .policy-summary ul,
+.policy-section ul {
+  margin: 8px 0 0;
+  padding-left: 1.3em;
+  display: grid;
+  gap: 8px;
+  font-size: 18px;
+  line-height: 1.55;
+}
+.policy-summary {
+  background: var(--teal-soft);
+}
+.policy-section {
+  margin-top: var(--space-xl);
+}
+.policy-section .h2 {
+  margin-bottom: var(--space-sm);
+}
+.policy-section .h3 {
+  font-family: var(--font-display, inherit);
+  font-size: 20px;
+  margin: var(--space-md) 0 6px;
+}
+.policy-section .body-text + .body-text {
+  margin-top: 10px;
+}
+.policy a {
+  overflow-wrap: anywhere;
 }
